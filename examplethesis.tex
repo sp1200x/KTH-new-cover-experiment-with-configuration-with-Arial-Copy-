@@ -955,6 +955,67 @@ Parameter assumptions introduce additional uncertainty. Static NTC values throug
 
 Finally, the model assumes competitive bidding behavior with all participants bidding at marginal cost. Strategic behavior---including potential exercise of market power or portfolio optimization across multiple zones---is not modeled. To the extent that actual market outcomes reflect strategic considerations, simulated results may diverge from realized performance.
 
+\section{Reflections on Sustainability and Ethics}
+\label{sec:sustainability_ethics}
+
+In accordance with the requirements of the Swedish Higher Education Ordinance, this section reflects on the sustainability implications and ethical dimensions of the research conducted in this thesis.
+
+\subsection{Sustainability Analysis}
+
+The transition to sustainable energy systems represents one of the defining challenges of the 21st century. Electricity market design, while often viewed as a purely economic or technical concern, has profound implications for the pace and equity of this transition. This thesis contributes to sustainability objectives through its analysis of capacity allocation methodologies that enable more efficient utilization of existing transmission infrastructure.
+
+\subsubsection{Ecological Sustainability and Climate Action (SDG 7, SDG 13)}
+
+Flow-Based Market Coupling directly supports the United Nations Sustainable Development Goal 7 (Affordable and Clean Energy) and Goal 13 (Climate Action) through two primary mechanisms.
+
+First, FBMC enables higher utilization of cross-border transmission capacity, reducing the need for new transmission line construction. Transmission infrastructure development carries significant environmental costs: land use changes, habitat fragmentation, and the embodied carbon in steel towers and aluminum conductors. By extracting greater value from existing infrastructure, FBMC represents a form of resource efficiency that delays or avoids these environmental impacts.
+
+Second, and more significantly, improved market coupling facilitates the integration of variable renewable energy sources. The Nordic region's abundant wind and hydroelectric resources are geographically concentrated in areas distant from major load centers. Wind power in northern Sweden and Norway, hydroelectric reservoirs in the Scandinavian mountains---these resources require robust transmission access to reach consumers in southern population centers. When transmission constraints bind under ATC, renewable generation may be curtailed or displaced by fossil-fueled alternatives closer to load. FBMC's ability to identify non-obvious transmission paths reduces such curtailment, directly contributing to decarbonization objectives.
+
+The seasonal pattern identified in this thesis reinforces this connection. Winter periods---when FBMC delivers its greatest benefits---coincide with peak heating demand and maximum pressure on the power system. These are precisely the conditions under which inefficient capacity allocation would most likely force reliance on carbon-intensive peaking generation. The 6.5\% cost reduction achieved by FBMC during winter conditions thus represents not merely economic savings but avoided emissions.
+
+\subsubsection{Economic Sustainability (SDG 8, SDG 9)}
+
+Sustainable Development Goal 8 (Decent Work and Economic Growth) and Goal 9 (Industry, Innovation, and Infrastructure) are served by market designs that promote economic efficiency and optimal infrastructure utilization.
+
+The welfare gains quantified in this thesis---€4.37 million weekly under winter conditions---represent resources that can be redirected toward productive economic activity rather than being dissipated through inefficient dispatch. Over annual timescales, these savings accumulate to substantial sums that benefit electricity consumers, reduce industrial energy costs, and improve the competitiveness of Nordic economies.
+
+Furthermore, FBMC exemplifies the principle of smart infrastructure management. Rather than responding to transmission constraints solely through capital-intensive grid expansion, flow-based allocation represents an operational innovation that extracts latent value from existing assets. This approach aligns with circular economy principles and demonstrates that software and algorithmic improvements can substitute for physical resource consumption.
+
+\subsubsection{Social Sustainability (SDG 10, SDG 11)}
+
+The social dimensions of electricity market design are subtle but consequential. Sustainable Development Goal 10 (Reduced Inequalities) and Goal 11 (Sustainable Cities and Communities) require consideration of how market efficiency gains are distributed across society.
+
+FBMC's efficiency improvements manifest as reduced wholesale electricity prices, benefits that flow through to end consumers. However, the distribution of these benefits is not uniform. Industrial consumers with direct market exposure capture savings immediately, while residential consumers may experience attenuated benefits depending on retail market structures and regulatory pass-through requirements. Future research should examine the distributional equity of FBMC benefits across consumer categories and geographic regions.
+
+A potential concern is that optimized market algorithms could systematically disadvantage certain regions. If FBMC consistently routes power away from particular corridors to exploit loop flows, communities along those corridors might experience reduced grid investment or reliability concerns. The analysis in this thesis does not identify such patterns, but ongoing monitoring of regional outcomes is warranted as FBMC operation matures.
+
+\subsection{Ethical Considerations}
+
+\subsubsection{Research Ethics}
+
+This thesis adheres to established principles of research integrity and scientific ethics. Several specific measures warrant discussion.
+
+Data transparency and reproducibility constitute foundational ethical obligations in computational research. All input data used in this thesis derives from publicly accessible sources: the ENTSO-E Transparency Platform for demand and generation data, Svenska kraftnät publications for network parameters, and Nord Pool for price information. This reliance on open data ensures that the analysis can be independently verified and extended by other researchers, fulfilling the scientific community's expectation of reproducibility.
+
+The simulation code developed for this thesis employs open-source tools (Python, HiGHS solver) rather than proprietary software, further supporting reproducibility. While the specific implementation code is not published as part of this thesis, the methodological descriptions in Chapters 3 and 4 provide sufficient detail for independent replication.
+
+No human subjects were involved in this research, and no personal data was processed. The market data analyzed represents aggregated, anonymized information about system-level outcomes rather than individual consumer behavior. Consequently, no ethical review board approval was required, and no GDPR compliance concerns arise.
+
+\subsubsection{Technology Ethics}
+
+Beyond research ethics, the responsible engineer must consider the broader societal implications of the technologies they develop and analyze. Several technology ethics dimensions are relevant to electricity market coupling.
+
+Algorithmic transparency presents an emerging concern in market design. As market clearing algorithms become more sophisticated---incorporating flow-based constraints, machine learning forecasts, and complex optimization routines---the ability of market participants and regulators to understand and scrutinize market outcomes may diminish. FBMC, while more physically accurate than ATC, is also more opaque: the relationship between bids, network constraints, and clearing prices is mediated by PTDF matrices and RAM calculations that few market participants fully comprehend. This opacity could erode trust in market institutions or create opportunities for sophisticated actors to exploit informational advantages.
+
+Market power and competitive effects deserve consideration. By expanding the effective transmission capacity between zones, FBMC intensifies competition among generators across wider geographic areas. This generally benefits consumers through lower prices but may disadvantage generators in high-cost regions who previously enjoyed protection from import competition. The transition to FBMC thus creates winners and losers, raising questions of procedural fairness regarding how such transitions are governed and whether affected parties receive adequate notice and adjustment support.
+
+Finally, the automation of critical infrastructure decisions carries inherent risks. Market coupling algorithms clear billions of euros in transactions daily, and errors or manipulation could have severe economic consequences. The Nordic TSOs and SDAC (Single Day-Ahead Coupling) operators maintain extensive safeguards against such risks, but the concentration of decision-making authority in algorithmic systems warrants ongoing vigilance.
+
+\subsection{Summary}
+
+This thesis contributes to sustainability objectives by analyzing market mechanisms that enable more efficient utilization of transmission infrastructure and facilitate renewable energy integration. The research adheres to ethical standards of data transparency and reproducibility. Broader technology ethics considerations---including algorithmic transparency, competitive effects, and automation risks---are acknowledged as important dimensions of electricity market design that merit continued attention from researchers, regulators, and market participants.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CHAPTER 7: CONCLUSIONS AND FUTURE WORK
@@ -988,19 +1049,6 @@ Several directions for future work are identified:
     \item \textbf{Integration with N-1 security:} Explicit modeling of contingency constraints
     \item \textbf{Welfare distribution analysis:} Examination of how FBMC benefits are distributed across market participants
 \end{enumerate}
-
-\section{Reflections on Sustainability and Ethics}
-\label{sec:reflections}
-
-This thesis contributes to the United Nations Sustainable Development Goals, particularly:
-
-\textbf{SDG 7 (Affordable and Clean Energy):} Efficient capacity allocation enables better integration of renewable energy resources, particularly hydropower from northern Sweden, reducing the need for fossil fuel generation in southern regions.
-
-\textbf{SDG 9 (Industry, Innovation and Infrastructure):} The analysis supports informed infrastructure investment decisions by quantifying the value of transmission capacity under different allocation methodologies.
-
-\textbf{SDG 13 (Climate Action):} Improved market efficiency reduces overall system costs and enables higher renewable penetration, contributing to decarbonization objectives.
-
-From an ethical perspective, this research relies exclusively on public data sources and open-source tools, ensuring transparency and reproducibility. The findings are presented objectively, acknowledging limitations and avoiding overstatement of conclusions.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1077,5 +1125,61 @@ Source: Svenska kraftnät Kraftbalansen 2024~\cite{svk_kraftbalansen_2024}
 \clearpage
 \section*{For DIVA}
 \divainfo{pg:lastPageofPreface}{pg:lastPageofMainmatter}
+
+\clearpage
+\section*{For DiVA}
+\thispagestyle{empty}
+
+% This page contains metadata for archiving in DiVA (Digitala Vetenskapliga Arkivet).
+% It will be removed from the final published version.
+
+\begin{tabular}{@{}p{4.5cm}p{10cm}@{}}
+\toprule
+\textbf{Field} & \textbf{Data} \\
+\midrule
+\multicolumn{2}{l}{\textbf{Author Information}} \\
+\midrule
+Author Name & Simon Palmborg \\
+KTH User ID & [your KTH username] \\
+Email & [your @kth.se email] \\
+Programme & Master's Programme, Electric Power Engineering \\
+School & School of Electrical Engineering and Computer Science (EECS) \\
+\midrule
+\multicolumn{2}{l}{\textbf{Thesis Information}} \\
+\midrule
+Title (English) & Quantitative Assessment of Flow-Based Market Coupling versus Available Transfer Capacity for the Nordic Electricity Market \\
+Title (Swedish) & Kvantitativ bedömning av flödesbaserad marknadskoppling jämfört med tillgänglig överföringskapacitet för den nordiska elmarknaden \\
+Subtitle & A Simulation Study of Capacity Allocation Efficiency \\
+TRITA Number & TRITA-EECS-EX-2025:XXX \\
+\midrule
+\multicolumn{2}{l}{\textbf{Supervision}} \\
+\midrule
+Supervisor (KTH) & Mohammad Reza Hesamzadeh \\
+Examiner & [Examiner Name] \\
+External Supervisor & N/A \\
+\midrule
+\multicolumn{2}{l}{\textbf{Keywords}} \\
+\midrule
+English Keywords & Flow-Based Market Coupling, Available Transfer Capacity, Nordic electricity market, PTDF, market efficiency, transmission capacity allocation, welfare analysis \\
+Swedish Keywords & Flödesbaserad marknadskoppling, tillgänglig överföringskapacitet, nordisk elmarknad, PTDF, marknadseffektivitet, överföringskapacitetsallokering, välfärdsanalys \\
+\midrule
+\multicolumn{2}{l}{\textbf{Defense}} \\
+\midrule
+Presentation Date & [Date of oral presentation] \\
+Opponent & [Name of opponent] \\
+Location & [Room/Zoom link] \\
+\midrule
+\multicolumn{2}{l}{\textbf{Abstract (English)}} \\
+\midrule
+\multicolumn{2}{p{14.5cm}}{\small This thesis quantitatively compares Flow-Based Market Coupling (FBMC) and Available Transfer Capacity (ATC) methods for the Nordic electricity market. Using a 13-node zonal model with empirical data from the Swedish transmission system, simulations demonstrate that FBMC achieves 6.5\% cost savings under winter congestion conditions, equivalent to €4.37 million weekly. Benefits exhibit strong seasonal variation, ranging from 12.6\% in January to 0.25\% in July, correlating with transmission utilization on the critical SE2--SE3 corridor. Sensitivity analysis confirms that benefits amplify under system stress (16.1\% with reduced capacity) and disappear entirely under price convergence. The physical mechanism enabling FBMC benefits is identified as loop flow exploitation through Norwegian interconnections. Results align with Nordic RCC External Parallel Run data, validating the model's economic accuracy.} \\
+\midrule
+\multicolumn{2}{l}{\textbf{Sammanfattning (Swedish)}} \\
+\midrule
+\multicolumn{2}{p{14.5cm}}{\small Denna uppsats jämför kvantitativt flödesbaserad marknadskoppling (FBMC) och tillgänglig överföringskapacitet (ATC) för den nordiska elmarknaden. Med hjälp av en 13-nodsmodell och empiriska data från det svenska transmissionsnätet visar simuleringar att FBMC uppnår 6,5\% kostnadsbesparingar under vinterförhållanden med hög belastning, motsvarande 4,37 miljoner euro per vecka. Fördelarna uppvisar stark säsongsvariation, från 12,6\% i januari till 0,25\% i juli, korrelerat med utnyttjandegraden på den kritiska SE2--SE3-korridoren. Känslighetsanalys bekräftar att fördelarna förstärks under systemstress (16,1\% vid reducerad kapacitet) och försvinner helt vid priskonvergens. Den fysiska mekanismen som möjliggör FBMC-fördelar identifieras som utnyttjande av kretskraftsflöden genom norska sammanlänkningar.} \\
+\bottomrule
+\end{tabular}
+
+\vfill
+\noindent\textit{Note: This page is for administrative purposes only and will be removed from the published version.}
 
 \end{document}
