@@ -1,6 +1,7 @@
 %% forked from https://gits-15.sys.kth.se/giampi/kthlatex kthlatex-0.2rc4 on 2020-02-13
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{kththesis}[2025/05/25 KTH Thesis formatting]
+\RequirePackage{etoolbox}
 
 \newtoggle{digitaloutput}
 \DeclareOption{digitaloutput}{\toggletrue{digitaloutput}}
