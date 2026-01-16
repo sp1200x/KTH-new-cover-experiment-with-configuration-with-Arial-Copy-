@@ -123,6 +123,7 @@ nopostdot]{glossaries}
 \presentationCity{Stockholm}
 \opponentsNames{TBD}
 
+% TODO: Update TRITA number after thesis approval (assigned by student affairs office)
 \trita{TRITA -- EECS-EX}{2025:0000}
 
 \input{lib/pdf_related_includes}
@@ -177,7 +178,7 @@ The results demonstrate that FBMC produces measurable efficiency gains over ATC,
 
 Sensitivity analysis across five scenarios confirmed the robustness of these findings: FBMC benefits increase under constrained transmission (16.1\% savings with 30\% SE2--SE3 capacity reduction) and disappear entirely under price convergence conditions, validating that the mechanism operates through enhanced arbitrage facilitation. The topology analysis revealed that FBMC benefits are negligible for Sweden's internal radial corridors but become significant when cross-border connections create network loops enabling flow redistribution.
 
-These findings have implications for Nordic transmission planning and demonstrate that FBMC's value proposition is primarily realized during periods of high congestion, suggesting targeted implementation strategies may be appropriate.
+These findings have implications for Nordic transmission planning and demonstrate that FBMC delivers greatest value during high-congestion periods when transmission constraints actively bind.
 \end{scontents}
 
 \subsection*{Keywords}
@@ -204,7 +205,7 @@ En 13-nodsmodell utvecklades för att representera de fyra svenska elområdena (
 
 Resultaten visar att FBMC ger mätbara effektivitetsvinster jämfört med ATC, men med betydande säsongsvariation. Under vinterförhållanden (december 2024) uppnådde FBMC 6,5\% kostnadsbesparingar (4,37 miljoner EUR per vecka) jämfört med ATC, drivet av hög trängsel på SE2--SE3-korridoren (88\% utnyttjande). Under sommarförhållanden (juli 2024) var besparingarna endast 0,25\% på grund av minskad trängsel (53\% utnyttjande), vilket representerar en 50-faldig säsongsskillnad.
 
-Känslighetsanalys över fem scenarier bekräftade robustheten i dessa resultat: FBMC-fördelarna ökar vid begränsad transmission (16,1\% besparing vid 30\% SE2--SE3-kapacitetsreduktion) och försvinner helt vid priskonvergens, vilket validerar att mekanismen fungerar genom förbättrad arbitragefacilitering.
+Känslighetsanalys över fem scenarier bekräftade robustheten i dessa resultat: FBMC-fördelarna ökar vid begränsad transmission (16,1\% besparing vid 30\% SE2--SE3-kapacitetsreduktion) och försvinner helt vid priskonvergens, vilket validerar att mekanismen fungerar genom förbättrad arbitragefacilitering. Dessa resultat visar att FBMC levererar störst värde under perioder med hög trängsel när transmissionsbegränsningar aktivt binder.
 \end{scontents}
 
 \subsection*{Nyckelord}
@@ -467,7 +468,13 @@ Schönheit et al.~\cite{schonheit_gsk_2020} systematically analyzed how differen
 
 Van den Bergh et al.~\cite{van_den_bergh_dc_2014} examined the validity of DC power flow assumptions in market models, providing theoretical justification for the approximations used in operational FBMC implementations.
 
-The literature specific to Nordic FBMC remains limited given the recent implementation. This thesis contributes by providing early quantitative evidence on FBMC performance in the Nordic context.
+The Central Western European (CWE) implementation, operational since May 2015, provides the most extensive empirical evidence on FBMC performance. Post-implementation analyses by ACER and the CWE TSOs documented welfare gains of 150--300 million EUR annually~\cite{cwe_tsos_2020}, though these estimates vary depending on the counterfactual ATC assumptions employed. Notably, the CWE experience revealed implementation challenges including the need for frequent PTDF matrix updates, coordination across multiple TSOs, and market participant adaptation to more complex price formation dynamics.
+
+Beyond CWE, other European regions have pursued or are pursuing FBMC adoption. The Italy North capacity calculation region implemented flow-based allocation in 2021, while the Core capacity calculation region---encompassing Central Europe---completed its transition in June 2022~\cite{acer2022core}. These implementations provide comparative evidence, though direct comparison is complicated by differences in network topology, market structure, and congestion patterns.
+
+Academic debate continues regarding optimal GSK methodologies. Schönheit et al.~\cite{schonheit2020gsk} demonstrated that different GSK strategies can yield PTDF variations of 10--20\% on critical network elements, materially affecting the flow-based domain. The choice between proportional, merit-order, and capacity-weighted GSKs remains an active research question, with operational implementations typically employing hybrid approaches refined through parallel running experience.
+
+Nordic-specific research during the External Parallel Run (EPR) period from 2023--2024 remains limited in the public academic literature, though the Nordic RCC published periodic summary reports documenting welfare estimates and implementation progress. This thesis contributes to filling this gap by providing independent quantitative analysis using publicly available data.
 
 \section{Summary}
 \label{sec:background_summary}
@@ -563,6 +570,8 @@ This approach aligns with the ``flat start'' methodology used in early FBMC impl
 
 A systematic comparison of GSK strategies is beyond the scope of this thesis but represents a valuable direction for future work, particularly as Nordic TSOs refine their operational GSK methodologies following the October 2024 go-live.
 
+\textbf{Note:} The proportional GSK assumption represents a methodological choice with quantifiable impacts on results. Schönheit et al.~\cite{schonheit_gsk_2020} demonstrated that alternative GSK strategies can yield PTDF variations of 10--20\%, suggesting that sensitivity analysis across GSK methodologies would strengthen the conclusions presented here.
+
 \section{Data Collection}
 \label{sec:data_collection}
 
@@ -655,7 +664,7 @@ A central methodological choice in this thesis is the use of a 13-node zonal mod
 
 The distinction lies in the analytical objective. Transmission System Operators require high-resolution nodal models to ensure operational security: managing voltage profiles, satisfying N-1 contingency constraints, and coordinating real-time redispatch. This thesis addresses a different question---the economic efficiency of capacity allocation methodologies at the market coupling level. For this purpose, zonal aggregation is standard practice in the academic literature~\cite{weinhold_pomato_2021, schonheit_gsk_2020}.
 
-The validity of zonal aggregation rests on whether the model captures the relevant physical mechanisms. The critical loop flow path (SE2--NO4--NO3--NO1--SE3) is explicitly represented in the 13-node topology. Furthermore, the close correspondence between simulated savings (€4.37M/week) and Nordic RCC official estimates (€6.1M/week average) provides empirical validation that the model captures economically significant dynamics despite its simplified representation.
+The validity of zonal aggregation rests on whether the model captures the relevant physical mechanisms. The critical loop flow path (SE2--NO4--NO3--NO1--SE3) is explicitly represented in the 13-node topology. Furthermore, the close correspondence between simulated savings (€4.37M/week) and Nordic RCC official estimates (€6.1M/week average) provides empirical validation that the model captures economically significant dynamics despite its simplified representation. Section~\ref{sec:rcc_validation} provides quantitative validation against Nordic RCC operational data.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -711,7 +720,7 @@ Figure~\ref{fig:ptdf_heatmap} presents the calculated PTDF matrix as a heatmap, 
   \begin{center}
     \includegraphics[width=0.9\textwidth]{figures/ptdf_heatmap_v3.png}
   \end{center}
-  \caption{PTDF matrix heatmap showing the sensitivity of line flows to nodal injections}
+  \caption{Power Transfer Distribution Factor matrix showing percent of injected power at each node (columns) that flows through each transmission corridor (rows)}
   \label{fig:ptdf_heatmap}
 \end{figure}
 
@@ -788,21 +797,21 @@ Figure~\ref{fig:line_utilization} compares line utilization between FBMC and ATC
 
 Table~\ref{tab:sensitivity} presents sensitivity analysis results across five scenarios.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{Sensitivity Analysis Results}
 \label{tab:sensitivity}
-\begin{tabular}{llr}
-\hline
-\textbf{Scenario} & \textbf{Description} & \textbf{FBMC Savings} \\
-\hline
-Base & December 2024 conditions & 6.5\% \\
-A & Continental prices +30\% & 4.9\% \\
-B & Norwegian prices -30\% & 4.6\% \\
-C & Price convergence (60 EUR/MWh) & 0.0\% \\
-D & SE2--SE3 capacity -30\% & 16.1\% \\
-E & Cross-border capacity +20\% & 6.7\% \\
-\hline
+\begin{tabular}{llrr}
+\toprule
+Scenario & Description & FBMC Savings (\%) & Savings (M EUR) \\
+\midrule
+Base & December 2024 conditions & 6.5 & 4.37 \\
+A & Continental prices +30\% & 4.9 & 3.00 \\
+B & Norwegian prices -30\% & 4.6 & 4.41 \\
+C & Price convergence (60 EUR/MWh) & 0.0 & 0.00 \\
+D & SE2--SE3 capacity -30\% & 16.1 & 8.02 \\
+E & Cross-border capacity +20\% & 6.7 & 5.07 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -922,6 +931,7 @@ Network topology differences also play a role. The Nordic configuration---with c
 Finally, modeling assumptions may contribute to the difference. This thesis uses static NTC values that may be more conservative than actual TSO practice, potentially overstating ATC's limitations. Additionally, the simplified 13-node representation excludes internal constraints that would reduce FBMC's optimization flexibility in a detailed model. These factors suggest that the 6.5\% figure should be interpreted as indicative of FBMC's potential under idealized conditions rather than a precise prediction of operational outcomes.
 
 \section{Validation Against Nordic RCC Data}
+\label{sec:rcc_validation}
 
 The simulated results can be compared against official data from the Nordic Regional Coordination Centre (RCC), which coordinated an 18-month External Parallel Run (EPR) from early 2023 until the FBMC go-live in October 2024. During this period, both ATC and FBMC were computed in parallel, enabling direct comparison of market outcomes~\cite{nordic_rcc_epr_2024}.
 
@@ -953,6 +963,8 @@ The temporal coverage of the analysis is limited to representative weeks from th
 
 Parameter assumptions introduce additional uncertainty. Static NTC values throughout each simulation period do not reflect hourly TSO adjustments based on real-time conditions. Marginal cost assumptions, while based on typical technology values, may diverge from actual market bids that incorporate strategic considerations, start-up costs, and opportunity costs not captured in simple merit-order assumptions.
 
+The NTC values employed as the ATC baseline represent maximum announced capacities, whereas operational ATC frequently involves reliability-driven reductions. This comparison methodology may overstate FBMC benefits relative to a baseline using actual historical ATC allocations. However, the use of maximum NTC also represents a ``best case'' for ATC, as any reduction from these maxima would further constrain ATC outcomes while leaving FBMC's flow-based domain largely unaffected.
+
 Finally, the model assumes competitive bidding behavior with all participants bidding at marginal cost. Strategic behavior---including potential exercise of market power or portfolio optimization across multiple zones---is not modeled. To the extent that actual market outcomes reflect strategic considerations, simulated results may diverge from realized performance.
 
 \section{Reflections on Sustainability and Ethics}
@@ -972,7 +984,7 @@ First, FBMC enables higher utilization of cross-border transmission capacity, re
 
 Second, and more significantly, improved market coupling facilitates the integration of variable renewable energy sources. The Nordic region's abundant wind and hydroelectric resources are geographically concentrated in areas distant from major load centers. Wind power in northern Sweden and Norway, hydroelectric reservoirs in the Scandinavian mountains---these resources require robust transmission access to reach consumers in southern population centers. When transmission constraints bind under ATC, renewable generation may be curtailed or displaced by fossil-fueled alternatives closer to load. FBMC's ability to identify non-obvious transmission paths reduces such curtailment, directly contributing to decarbonization objectives.
 
-The seasonal pattern identified in this thesis reinforces this connection. Winter periods---when FBMC delivers its greatest benefits---coincide with peak heating demand and maximum pressure on the power system. These are precisely the conditions under which inefficient capacity allocation would most likely force reliance on carbon-intensive peaking generation. The 6.5\% cost reduction achieved by FBMC during winter conditions thus represents not merely economic savings but avoided emissions.
+The seasonal pattern identified in this thesis reinforces this connection. Winter periods---when FBMC delivers its greatest benefits---coincide with peak heating demand and maximum pressure on the power system. These are precisely the conditions under which inefficient capacity allocation would most likely force reliance on carbon-intensive peaking generation. The 6.5\% cost reduction achieved by FBMC during winter conditions thus represents not merely economic savings but avoided emissions.\footnote{The computational requirements of the research itself---approximately 50 CPU-hours for all simulations using the HiGHS solver---represent a modest environmental footprint compared to the potential emissions reductions enabled by improved market design.}
 
 \subsubsection{Economic Sustainability (SDG 8, SDG 9)}
 
@@ -1029,13 +1041,15 @@ This thesis contributes to sustainability objectives by analyzing market mechani
 
 This thesis set out to quantify the efficiency differential between Flow-Based Market Coupling and Available Transfer Capacity for the Nordic electricity market. Through simulation of market clearing under both regimes using empirical data from the Swedish transmission system, it has produced findings that address each of the research questions posed in Chapter~\ref{ch:introduction}.
 
-The central finding is that FBMC provides measurable and economically significant efficiency gains over ATC, but these gains are neither uniform nor guaranteed. Under winter conditions with high north-south congestion, FBMC achieves cost savings of 6.5\% compared to ATC---a substantial improvement that validates the Nordic region's decision to implement flow-based allocation. However, during summer periods with low demand and minimal congestion, FBMC benefits shrink to just 0.25\%, representing a fifty-fold seasonal variation. This pattern reveals that FBMC is not a universal improvement but rather a tool whose value is contingent on system conditions.
+The central finding is that FBMC provides measurable and economically significant efficiency gains over ATC, but these gains are neither uniform nor guaranteed. Under winter conditions with high north-south congestion, FBMC achieves cost savings of 6.5\% compared to ATC---a substantial improvement that validates the Nordic region's decision to implement flow-based allocation. However, during summer periods with low demand and minimal congestion, FBMC benefits shrink to just 0.25\%, with benefits varying by more than an order of magnitude between seasons. This pattern reveals that FBMC is not a universal improvement but rather a tool whose value is contingent on system conditions.
 
 The thesis identifies the physical mechanism enabling these benefits: the presence of cross-border loop flows that create alternative routing paths for power delivery. Sweden's internal transmission corridors are predominantly radial, offering no scope for FBMC optimization. Benefits materialize only when Norwegian interconnections provide parallel paths that can relieve congestion on the critical SE2--SE3 bottleneck. This topology dependency has implications for transmission planning---investments that create network loops may yield compounding benefits by expanding the scope for flow-based optimization.
 
 The robustness of these findings has been confirmed through sensitivity analysis across five scenarios spanning price variations and capacity constraints. FBMC maintains positive benefits across all scenarios except complete price convergence, where---as theory predicts---the value of improved allocation disappears entirely. Under constrained transmission conditions, benefits amplify to 16.1\%, demonstrating that FBMC delivers greatest value during periods of system stress when efficient allocation matters most.
 
 These conclusions carry implications for Nordic market design and regulatory monitoring. The strong seasonal pattern suggests that annual averages obscure significant temporal variation in FBMC performance, and that regulators should track benefits on a seasonal or monthly basis. The topology dependency implies that Swedish bidding zone configuration and cross-border interconnection strategy should be evaluated jointly with capacity allocation methodology. Finally, the validation of simulated results against Nordic RCC operational data provides confidence that simplified zonal models can capture the economically significant dynamics of flow-based market coupling.
+
+These Nordic findings contribute to the broader European evidence base on FBMC implementation. The Core region experience since June 2022 provides complementary evidence from a more densely meshed network, while ongoing discussions about extending FBMC to additional capacity calculation regions can draw on the Nordic demonstration that flow-based allocation delivers value even in predominantly radial topologies.
 
 \section{Future Work}
 \label{sec:future_work}
@@ -1125,61 +1139,5 @@ Source: Svenska kraftnät Kraftbalansen 2024~\cite{svk_kraftbalansen_2024}
 \clearpage
 \section*{For DIVA}
 \divainfo{pg:lastPageofPreface}{pg:lastPageofMainmatter}
-
-\clearpage
-\section*{For DiVA}
-\thispagestyle{empty}
-
-% This page contains metadata for archiving in DiVA (Digitala Vetenskapliga Arkivet).
-% It will be removed from the final published version.
-
-\begin{tabular}{@{}p{4.5cm}p{10cm}@{}}
-\toprule
-\textbf{Field} & \textbf{Data} \\
-\midrule
-\multicolumn{2}{l}{\textbf{Author Information}} \\
-\midrule
-Author Name & Simon Palmborg \\
-KTH User ID & [your KTH username] \\
-Email & [your @kth.se email] \\
-Programme & Master's Programme, Electric Power Engineering \\
-School & School of Electrical Engineering and Computer Science (EECS) \\
-\midrule
-\multicolumn{2}{l}{\textbf{Thesis Information}} \\
-\midrule
-Title (English) & Quantitative Assessment of Flow-Based Market Coupling versus Available Transfer Capacity for the Nordic Electricity Market \\
-Title (Swedish) & Kvantitativ bedömning av flödesbaserad marknadskoppling jämfört med tillgänglig överföringskapacitet för den nordiska elmarknaden \\
-Subtitle & A Simulation Study of Capacity Allocation Efficiency \\
-TRITA Number & TRITA-EECS-EX-2025:XXX \\
-\midrule
-\multicolumn{2}{l}{\textbf{Supervision}} \\
-\midrule
-Supervisor (KTH) & Mohammad Reza Hesamzadeh \\
-Examiner & [Examiner Name] \\
-External Supervisor & N/A \\
-\midrule
-\multicolumn{2}{l}{\textbf{Keywords}} \\
-\midrule
-English Keywords & Flow-Based Market Coupling, Available Transfer Capacity, Nordic electricity market, PTDF, market efficiency, transmission capacity allocation, welfare analysis \\
-Swedish Keywords & Flödesbaserad marknadskoppling, tillgänglig överföringskapacitet, nordisk elmarknad, PTDF, marknadseffektivitet, överföringskapacitetsallokering, välfärdsanalys \\
-\midrule
-\multicolumn{2}{l}{\textbf{Defense}} \\
-\midrule
-Presentation Date & [Date of oral presentation] \\
-Opponent & [Name of opponent] \\
-Location & [Room/Zoom link] \\
-\midrule
-\multicolumn{2}{l}{\textbf{Abstract (English)}} \\
-\midrule
-\multicolumn{2}{p{14.5cm}}{\small This thesis quantitatively compares Flow-Based Market Coupling (FBMC) and Available Transfer Capacity (ATC) methods for the Nordic electricity market. Using a 13-node zonal model with empirical data from the Swedish transmission system, simulations demonstrate that FBMC achieves 6.5\% cost savings under winter congestion conditions, equivalent to €4.37 million weekly. Benefits exhibit strong seasonal variation, ranging from 12.6\% in January to 0.25\% in July, correlating with transmission utilization on the critical SE2--SE3 corridor. Sensitivity analysis confirms that benefits amplify under system stress (16.1\% with reduced capacity) and disappear entirely under price convergence. The physical mechanism enabling FBMC benefits is identified as loop flow exploitation through Norwegian interconnections. Results align with Nordic RCC External Parallel Run data, validating the model's economic accuracy.} \\
-\midrule
-\multicolumn{2}{l}{\textbf{Sammanfattning (Swedish)}} \\
-\midrule
-\multicolumn{2}{p{14.5cm}}{\small Denna uppsats jämför kvantitativt flödesbaserad marknadskoppling (FBMC) och tillgänglig överföringskapacitet (ATC) för den nordiska elmarknaden. Med hjälp av en 13-nodsmodell och empiriska data från det svenska transmissionsnätet visar simuleringar att FBMC uppnår 6,5\% kostnadsbesparingar under vinterförhållanden med hög belastning, motsvarande 4,37 miljoner euro per vecka. Fördelarna uppvisar stark säsongsvariation, från 12,6\% i januari till 0,25\% i juli, korrelerat med utnyttjandegraden på den kritiska SE2--SE3-korridoren. Känslighetsanalys bekräftar att fördelarna förstärks under systemstress (16,1\% vid reducerad kapacitet) och försvinner helt vid priskonvergens. Den fysiska mekanismen som möjliggör FBMC-fördelar identifieras som utnyttjande av kretskraftsflöden genom norska sammanlänkningar.} \\
-\bottomrule
-\end{tabular}
-
-\vfill
-\noindent\textit{Note: This page is for administrative purposes only and will be removed from the published version.}
 
 \end{document}
