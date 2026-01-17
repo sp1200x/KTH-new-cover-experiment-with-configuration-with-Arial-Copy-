@@ -177,7 +177,7 @@ A 13-node zonal market model was developed representing the four Swedish bidding
 
 The results demonstrate that FBMC produces measurable efficiency gains over ATC, but with significant seasonal variation. During winter conditions (December 2024), FBMC achieved 6.5\% cost savings (4.37 million EUR weekly) compared to ATC, driven by high congestion on the SE2--SE3 corridor (88\% utilization). In contrast, summer conditions (July 2024) showed only 0.25\% savings due to reduced congestion (53\% utilization), representing a 50-fold seasonal differential. The analysis employs a proportional Generation Shift Key (GSK) assumption; alternative GSK methodologies could yield different absolute magnitudes (literature suggests ±10--20\% variation) while preserving the directional finding that FBMC outperforms ATC under congested conditions.
 
-Sensitivity analysis across five scenarios confirmed the robustness of these findings: FBMC benefits increase under constrained transmission (16.1\% savings with 30\% SE2--SE3 capacity reduction) and disappear entirely under price convergence conditions, validating that the mechanism operates through enhanced arbitrage facilitation. The topology analysis revealed that FBMC benefits are negligible for Sweden's internal radial corridors but become significant when cross-border connections create network loops enabling flow redistribution.
+Sensitivity analysis across five scenarios confirmed that FBMC consistently outperforms ATC, though benefit magnitude varies substantially from 0\% to 16.1\% depending on congestion levels and price conditions. Two findings validate the underlying mechanism: FBMC benefits amplify under constrained transmission (16.1\% savings with 30\% SE2–SE3 capacity reduction) and disappear entirely under price convergence conditions, confirming that the mechanism operates through enhanced arbitrage facilitation. The PTDF matrix analysis reveals non-trivial flow distribution factors for the SE2–NO4 corridor (0.286), indicating that cross-border connections create alternative routing paths through Norwegian interconnections. This suggests FBMC benefits arise from loop flow exploitation rather than improvements to Sweden's internal radial corridors, though this topology dependency was not independently tested through corridor isolation scenarios.
 
 These findings have implications for Nordic transmission planning and demonstrate that FBMC delivers greatest value during high-congestion periods when transmission constraints actively bind.
 \end{scontents}
@@ -223,11 +223,11 @@ Känslighetsanalys över fem scenarier bekräftade robustheten i dessa resultat:
 \section*{Acknowledgments}
 \markboth{Acknowledgments}{}
 
-I would like to express my sincere gratitude to my supervisor, Saeed Mohammadi, for his guidance and support throughout this project. I am also thankful to my examiner, Professor Mohammad Reza Hesamzadeh, for his expertise in electricity market design.
+I would like to express my sincere gratitude to my supervisor, Saeed Mohammadi, and my examiner, Professor Mohammad Reza Hesamzadeh their guidance, expertise and support throughout this project. 
 
-I am grateful to Svenska kraftnät and ENTSO-E for making comprehensive market data publicly available through their transparency platforms, enabling independent research on European electricity markets.
+%I am grateful to Svenska kraftnät and ENTSO-E for making comprehensive market data publicly available through their transparency platforms, enabling independent research on European electricity markets.
 
-Finally, I thank my family and friends for their support during my studies at KTH.
+%Finally, I thank my family and friends for their support during my studies at KTH.
 
 \acknowlegmentssignature
 
@@ -879,13 +879,26 @@ Analysis of the underlying mechanisms confirms the theoretical expectations:
 
 \textbf{Topology Effect:} FBMC provides minimal benefit for Sweden's internal radial corridors (SE1--SE2--SE3--SE4) where power flow paths are uniquely determined. Benefits emerge only when cross-border connections create loops, specifically the SE2--NO4--NO3--NO1--SE3 path that allows alternative routing.
 
-\textbf{Congestion Correlation:} Figure~\ref{fig:congestion_benefit} shows the strong positive correlation between SE2--SE3 utilization and FBMC benefit magnitude.
+\textbf{Congestion Correlation:} Figure~\ref{fig:congestion_benefit} illustrates the positive relationship 
+between SE2–SE3 corridor utilization and FBMC benefit magnitude across the 
+four analysis scenarios. While the limited number of observations (n=4) 
+precludes formal statistical inference, the monotonic pattern is consistent 
+with theoretical expectations: FBMC benefits increase systematically with 
+transmission utilization. The near-zero benefits during July (53% utilization) 
+and substantial benefits under Scenario D (reduced capacity, higher 
+utilization) bracket the relationship, demonstrating that FBMC value emerges 
+only when transmission constraints actively bind.
 
 \begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{figures/congestion_benefit.png}
   \end{center}
-  \caption{Relationship between congestion level and FBMC benefit}
+  \caption{Relationship between SE2–SE3 corridor utilization and FBMC cost 
+savings. Each point represents one analysis scenario (n=4): January 2024, 
+December 2024, July 2024, and Scenario D (reduced capacity). The monotonic 
+relationship supports the hypothesis that FBMC benefits increase with 
+congestion levels, though the limited sample size precludes formal 
+statistical inference.}
   \label{fig:congestion_benefit}
 \end{figure}
 
