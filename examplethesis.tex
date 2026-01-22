@@ -115,7 +115,7 @@ nopostdot]{glossaries}
 \IfFileExists{custom_configuration_plaintext.tex}{\input{custom_configuration_plaintext.tex}}{}
 
 \EnglishKeywords{Flow-Based Market Coupling, Available Transfer Capacity, Nordic Electricity Market, Power Transfer Distribution Factors, Congestion Management, Zonal Pricing, Market Efficiency}
-\SwedishKeywords{Flödesbaserad marknadskoppling, Tillgänglig överföringskapacitet, Nordisk elmarknad, Effektöverföringsfaktorer, Trängselhantering, Zonprissättning, Marknadseffektivitet}
+\SwedishKeywords{Flödesbaserad marknadskoppling, ATC-kapacitet, Nordisk elmarknad, Effektöverföringsfaktorer, Trängselhantering, Zonprissättning, Marknadseffektivitet}
 
 \presentationDateAndTimeISO{2025-06-15 10:00}
 \presentationLanguage{eng}
@@ -200,13 +200,14 @@ swe
 \end{scontents}
 
 \begin{scontents}[store-env=abstracts,print-env=true]
-Den europeiska elmarknaden genomgår en fundamental förändring i hur gränsöverskridande överföringskapacitet allokeras, där flödesbaserad marknadskoppling (FBMC) ersätter den traditionella metoden med tillgänglig överföringskapacitet (ATC). Detta examensarbete presenterar en kvantitativ jämförelse mellan FBMC och ATC för den nordiska elmarknaden, med fokus på det svenska transmissionssystemet efter FBMC-implementeringen i oktober 2024.
+Den europeiska elmarknaden genomgår en genomgripande förändring i hur gränsöverskridande överföringskapacitet allokeras, där flödesbaserad marknadskoppling (FBMC) ersätter den traditionella metoden med tillgänglig överföringskapacitet (ATC). Detta examensarbete presenterar en kvantitativ jämförelse mellan FBMC och ATC för den nordiska elmarknaden, med särskilt fokus på det svenska transmissionssystemet efter FBMC-implementeringen i oktober 2024.
 
 En 13-nodsmodell utvecklades för att representera de fyra svenska elområdena (SE1--SE4) samt nio angränsande marknadsområden. Modellen implementerar DC-lastflödesbaserade beräkningar av effektöverföringsfaktorer (PTDF) och linjärprogrammeringsoptimering med Python och HiGHS-lösaren. Marknadsklarering simulerades under både FBMC (PTDF-begränsad) och ATC (NTC-begränsad) med data från ENTSO-E Transparency Platform och Svenska kraftnät.
 
-Resultaten visar att FBMC ger mätbara effektivitetsvinster jämfört med ATC, men med betydande säsongsvariation. Under vinterförhållanden (december 2024) uppnådde FBMC 6,5\% kostnadsbesparingar (4,37 miljoner EUR per vecka) jämfört med ATC, drivet av hög trängsel på SE2--SE3-korridoren (88\% utnyttjande). Under sommarförhållanden (juli 2024) var besparingarna endast 0,25\% på grund av minskad trängsel (53\% utnyttjande), vilket representerar en 50-faldig säsongsskillnad. Analysen använder ett proportionellt antagande för generatorskiftnycklar (GSK); alternativa GSK-metoder kan ge andra absoluta storleksordningar (litteraturen antyder ±10--20\% variation) samtidigt som det riktningsberoende resultatet---att FBMC överträffar ATC under trängselförhållanden---bevaras.
+Resultaten visar att FBMC ger mätbara effektivitetsvinster jämfört med ATC, men med betydande säsongsvariation. Under vinterförhållanden (december 2024) uppnådde FBMC 6,5\% kostnadsbesparingar (4,37 miljoner EUR per vecka) jämfört med ATC, drivet av hög trängsel på SE2--SE3-korridoren (88\% utnyttjande). Under sommarförhållanden (juli 2024) var besparingarna endast 0,25\% på grund av minskad trängsel (53\% utnyttjande), vilket motsvarar en cirka 50-faldig skillnad mellan säsongerna. Analysen använder ett proportionellt antagande för generatorskiftnycklar (GSK); alternativa GSK-metoder kan ge andra absoluta storleksordningar (litteraturen antyder $\pm$10--20\% variation) samtidigt som det riktningsberoende resultatet---att FBMC överträffar ATC under trängselförhållanden---bevaras.
 
 Känslighetsanalys över fem scenarier bekräftade robustheten i dessa resultat: FBMC-fördelarna ökar vid begränsad transmission (16,1\% besparing vid 30\% SE2--SE3-kapacitetsreduktion) och försvinner helt vid priskonvergens, vilket validerar att mekanismen fungerar genom förbättrad arbitragefacilitering. Experiment med korridorisolering kvantifierade de underliggande mekanismerna: cirka 32\% av FBMC-fördelarna uppstår från utnyttjande av kretskraftsflöden genom norska sammanlänkningar, medan 68\% härrör från förbättrad optimering av Sveriges interna korridorer. Dessa resultat visar att FBMC levererar störst värde under perioder med hög trängsel när transmissionsbegränsningar aktivt binder.
+
 \end{scontents}
 
 \subsection*{Nyckelord}
@@ -223,7 +224,7 @@ Känslighetsanalys över fem scenarier bekräftade robustheten i dessa resultat:
 \section*{Acknowledgments}
 \markboth{Acknowledgments}{}
 
-I would like to express my sincere gratitude to my supervisor, Saeed Mohammadi, and my examiner, Professor Mohammad Reza Hesamzadeh their guidance, expertise and support throughout this project. 
+I would like to express my sincere gratitude to my supervisor, Saeed Mohammadi, and my examiner, Professor Mohammad Reza Hesamzadeh for their guidance, expertise and support throughout this project. 
 
 %I am grateful to Svenska kraftnät and ENTSO-E for making comprehensive market data publicly available through their transparency platforms, enabling independent research on European electricity markets.
 
@@ -290,7 +291,7 @@ The \gls{CWE} region pioneered FBMC implementation in May 2015, with subsequent 
 \section{Problem Definition}
 \label{sec:problem}
 
-The Swedish transmission system presents a compelling case study for analyzing FBMC effectiveness. Sweden's four bidding zones (SE1--SE4) exhibit a predominantly north-south radial topology, with the critical SE2--SE3 corridor representing the primary bottleneck constraining power transfer from hydroelectric-dominated northern regions to load-intensive southern consumption centers. This structural characteristic raises fundamental questions regarding the magnitude of efficiency gains achievable through FBMC in systems with limited internal loop flow opportunities.
+The Swedish transmission system presents a compelling case study for analyzing FBMC effectiveness. Sweden's four bidding zones (SE1--SE4) exhibit a predominantly north-south radial topology, with the SE2--SE3 corridor representing the primary bottleneck constraining power transfer from hydroelectric-dominated northern regions to load-intensive southern consumption centers. This structural characteristic raises fundamental questions regarding the magnitude of efficiency gains achievable through FBMC in systems with limited internal loop flow opportunities.
 
 \subsection{Research Questions}
 
@@ -341,7 +342,7 @@ The concrete goals of this degree project are:
 \section{Research Methodology}
 \label{sec:methodology_intro}
 
-This thesis employs quantitative simulation methodology combined with counterfactual analysis. A zonal market model is developed and validated against historical data, then used to simulate market outcomes under both FBMC and ATC regimes while holding all other factors constant. The difference in outcomes represents the causal effect of the capacity allocation methodology.
+This thesis employs quantitative simulation methodology combined with counterfactual analysis. A zonal market model is developed and validated against historical data, then used to simulate market outcomes under both FBMC and ATC regimes while holding all other factors constant. The difference in outcomes represents the causal effect of the capacity allocation methodology. 
 
 The choice of simulation methodology is motivated by several factors:
 \begin{itemize}
@@ -532,7 +533,7 @@ where $N$ is the set of nodes, $T$ is the set of time periods, $C_n$ is marginal
 
 \subsection{Constraints}
 
-\textbf{Power Balance:}
+\hspace{1.5em}\textbf{Power Balance:}
 \begin{equation}
 \sum_{u \in U_n} g_{u,t} - D_{n,t} = p_{n,t} \quad \forall n, t
 \end{equation}
@@ -563,9 +564,9 @@ where $x_l$ is line reactance and $\psi$ is the bus injection shift factor matri
 
 \subsection{Generation Shift Key Assumptions}
 
-The calculation of zonal PTDFs requires assumptions about how generation within each bidding zone responds to changes in net position---the so-called Generation Shift Keys (GSKs). Different GSK strategies can materially affect the resulting flow-based domain and, consequently, market outcomes~\cite{schonheit_gsk_2020}.
+The calculation of zonal PTDFs requires assumptions about how generation within each bidding zone responds to changes in net position. Hence, Generation Shift Keys (GSKs) are used. Different GSK strategies can materially affect the resulting flow-based domain and, consequently, market outcomes~\cite{schonheit_gsk_2020}.
 
-This thesis employs an implicit proportional GSK assumption. By computing PTDFs directly from the DC power flow equations at the zonal level, generation shifts are distributed according to network admittance structure. Mathematically, this is equivalent to assuming that all generators within a zone respond proportionally to their electrical connectivity to the rest of the system.
+This thesis uses an implicit proportional GSK assumption. By computing PTDFs directly from the DC power flow equations at the zonal level, generation shifts are distributed according to network admittance structure. Mathematically, this is equivalent to assuming that all generators within a zone respond proportionally to their electrical connectivity to the rest of the system.
 
 This approach aligns with the ``flat start'' methodology used in early FBMC implementations and provides a conservative baseline for analysis. Alternative GSK strategies---such as merit-order based or capacity-weighted approaches---could yield different PTDF matrices and thus different estimates of FBMC benefits. However, sensitivity to GSK methodology primarily affects the absolute magnitude of cross-border capacity, not the directional finding that FBMC outperforms ATC under congested conditions.
 
@@ -600,7 +601,7 @@ All data derives from authoritative public sources to ensure reproducibility:
 
 Generation marginal costs are assigned by technology:
 \begin{itemize}
-    \item Hydro: 0.5 EUR/MWh (water value approximation)
+    \item Hydro: 0.5 EUR/MWh %(water value approximation)
     \item Nuclear: 10 EUR/MWh
     \item Wind/Solar: 0 EUR/MWh
     \item CHP: 35--40 EUR/MWh
