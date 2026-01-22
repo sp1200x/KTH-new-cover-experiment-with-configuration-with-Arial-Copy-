@@ -882,6 +882,8 @@ Analysis of the underlying mechanisms confirms the theoretical expectations:
 
 To quantify the loop flow contribution, a corridor isolation experiment was conducted using the January 2024 high-congestion period. The simulation was re-run with Norwegian interconnections (SE1--NO4, SE2--NO3, SE3--NO1) removed from the network model. Under full network conditions, FBMC achieved 12.6\% cost savings (6.36M EUR weekly) compared to ATC. With Norwegian connections removed, FBMC savings decreased to 10.7\% (4.31M EUR weekly)---a reduction of 1.9 percentage points. This indicates that loop flows through Norwegian interconnections account for approximately 32\% of observed FBMC benefits (2.05M EUR), while the remaining 68\% (4.31M EUR) arises from improved optimization of Sweden's internal corridors even without cross-border alternatives.
 
+Flow analysis confirms this routing mechanism. Under FBMC, power flows counterclockwise through the Norwegian network: Sweden exports to Norway via SE1--NO4 (-600~MW average) and SE2--NO3 (-937~MW), while Norway returns power to southern Sweden via NO1--SE3 (+1410~MW). Under ATC, these flows are reversed---Sweden imports from Norway in the north and exports in the south---because ATC treats each corridor independently and cannot coordinate the loop. This flow reversal explains the reduced SE2--SE3 utilization under FBMC (88\% versus 99.7\%): approximately 1,600~MW is routed through the Norwegian loop rather than the direct Swedish corridor.
+
 \textbf{Congestion Correlation:} Figure~\ref{fig:congestion_benefit} illustrates the positive relationship 
 between SE2–SE3 corridor utilization and FBMC benefit magnitude across the 
 four analysis scenarios. While the limited number of observations (n=4) 
