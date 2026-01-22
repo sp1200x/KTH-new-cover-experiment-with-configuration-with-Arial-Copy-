@@ -272,7 +272,7 @@ I would like to express my sincere gratitude to my supervisor, Saeed Mohammadi, 
 \chapter{Introduction}
 \label{ch:introduction}
 
-The efficient allocation of cross-border transmission capacity is fundamental to the operation of interconnected electricity markets. As European power systems become increasingly integrated, the methodology used for capacity allocation directly impacts market efficiency, price formation, and ultimately consumer welfare. This chapter introduces the context, problem statement, and objectives of this thesis.
+The efficient allocation of cross-border transmission capacity is fundamental to the operation of interconnected electricity markets. As European power systems become increasingly integrated, the methodology used for capacity allocation directly impacts market efficiency, price formation, and ultimately consumer welfare~\cite{kirschen_strbac_2018}. This chapter introduces the context, problem statement, and objectives of this thesis.
 
 \section{Background}
 \label{sec:background}
@@ -281,11 +281,11 @@ The European Union's internal electricity market represents one of the world's l
 
 Historically, cross-border capacity allocation in European electricity markets has relied on the \gls{ATC} methodology. Under ATC, each transmission corridor is assigned a maximum transfer capacity value, the \gls{NTC}, which represents the maximum power that can be exchanged between two adjacent zones while respecting security constraints. These NTC values are determined by \glspl{TSO} based on worst-case assumptions about network conditions and are typically conservative to ensure N-1 security under all anticipated operating conditions~\cite{eu_cacm_2015}.
 
-The fundamental limitation of ATC lies in its treatment of the physical network. By reducing the complex, meshed transmission grid to simple bilateral capacity limits, ATC cannot capture the physical reality that power flows distribute across multiple parallel paths according to Kirchhoff's laws. In meshed networks, a transaction between zones A and B will cause flows not only on the direct A-B corridor but also on alternative paths through intermediate zones---so-called loop flows. The ATC methodology must embed conservative margins to account for these effects, resulting in systematic underutilization of actual physical capacity.
+The fundamental limitation of ATC lies in its treatment of the physical network. By reducing the complex, meshed transmission grid to simple bilateral capacity limits, ATC cannot capture the physical reality that power flows distribute across multiple parallel paths according to Kirchhoff's laws~\cite{wood_wollenberg_2014}. In meshed networks, a transaction between zones A and B will cause flows not only on the direct A-B corridor but also on alternative paths through intermediate zones---so-called loop flows. The ATC methodology must embed conservative margins to account for these effects, resulting in systematic underutilization of actual physical capacity.
 
 \gls{FBMC} addresses this limitation by explicitly modeling the physical network through \gls{PTDF} matrices. PTDFs quantify how a unit injection at one node and withdrawal at another distributes across all network elements. By incorporating these factors into the market clearing algorithm, FBMC can identify feasible dispatch solutions that would be rejected under ATC's simplified constraints, while still respecting actual physical limits on each \gls{CNEC}.
 
-The \gls{CWE} region pioneered FBMC implementation in May 2015, with subsequent analyses documenting welfare gains of 150--300 million EUR annually~\cite{acer_fbmc_2019}. Building on this experience, the Nordic electricity market---comprising Sweden, Norway, Finland, and Denmark---completed its transition to FBMC in October 2024 following an 18-month parallel operation period coordinated by the Nordic \gls{RCC}.
+The \gls{CWE} region pioneered FBMC implementation in May 2015, with subsequent analyses documenting welfare gains of 150--300 million EUR annually~\cite{acer_fbmc_2019}. Building on this experience, the Nordic electricity market---comprising Sweden, Norway, Finland, and Denmark---completed its transition to FBMC in October 2024~\cite{entsoe_nordic_ccm_2022} following an 18-month parallel operation period coordinated by the Nordic \gls{RCC}.
 
 \section{Problem Definition}
 \label{sec:problem}
@@ -397,7 +397,7 @@ This chapter provides the theoretical foundation for understanding capacity allo
 
 Modern electricity markets operate through a sequence of trading platforms with different time horizons. The day-ahead market, operated by power exchanges such as Nord Pool in the Nordic region, determines hourly prices and quantities for the following day through a uniform-price auction. Market participants submit bids specifying the quantity they wish to buy or sell at various price levels, and the market operator determines the market-clearing price where aggregate supply equals aggregate demand.
 
-In zonal pricing systems, the market is divided into bidding zones within which a single price applies. When transmission capacity between zones is sufficient to accommodate all desired trades, prices converge across zones. When transmission constraints bind, zones decouple and different prices emerge, reflecting the marginal cost of congestion.
+In zonal pricing systems~\cite{bjorndal_2001}, the market is divided into bidding zones within which a single price applies. When transmission capacity between zones is sufficient to accommodate all desired trades, prices converge across zones. When transmission constraints bind, zones decouple and different prices emerge, reflecting the marginal cost of congestion.
 
 \section{Available Transfer Capacity Method}
 \label{sec:atc_theory}
@@ -450,7 +450,7 @@ The critical advantage is that FBMC constraints reflect actual physical flows, a
 \section{The Nordic Electricity Market}
 \label{sec:nordic_market}
 
-The Nordic electricity market, operated by Nord Pool, represents one of the world's most integrated multinational power markets. The market encompasses multiple bidding zones across Sweden (SE1--SE4), Norway (NO1--NO5), Finland (FI), and Denmark (DK1--DK2), each representing a region within which a single price applies during any given hour.
+The Nordic electricity market, operated by Nord Pool~\cite{nordpool_2024}, represents one of the world's most integrated multinational power markets. The market encompasses multiple bidding zones across Sweden (SE1--SE4), Norway (NO1--NO5), Finland (FI), and Denmark (DK1--DK2), each representing a region within which a single price applies during any given hour.
 
 The generation mix across the Nordic region reflects diverse natural resource endowments. Norway and northern Sweden possess abundant hydropower resources, providing flexible and low-marginal-cost generation that dominates the supply stack during most hours. Sweden and Finland operate nuclear power plants that provide baseload generation with high availability factors. Wind power capacity has grown substantially across all Nordic countries over the past decade, introducing variability that increases the value of flexible transmission capacity.
 
@@ -458,7 +458,7 @@ Cross-border interconnection plays a central role in Nordic market operation. Th
 
 Demand patterns in the Nordic region exhibit pronounced seasonality. Winter peaks driven by electric heating substantially exceed summer demand, creating seasonal variation in both prices and transmission congestion. This seasonality proves critical for understanding FBMC benefits, as congestion---and thus the value of improved capacity allocation---concentrates in winter months.
 
-Sweden's internal transmission system follows a predominantly north-south orientation, reflecting the geographic separation between hydroelectric generation in the north and population centers in the south. The SE2--SE3 corridor, with a nominal NTC of approximately 7,300~MW, represents the critical bottleneck constraining power transfer from the generation-rich northern zones to load-intensive SE3 and SE4. This corridor's frequent congestion makes it a natural focus for analyzing capacity allocation methodologies.
+Sweden's internal transmission system follows a predominantly north-south orientation, reflecting the geographic separation between hydroelectric generation in the north and population centers in the south. The SE2--SE3 corridor, with a nominal NTC of approximately 7,300~MW~\cite{svk_perspektivplan_2024}, represents the critical bottleneck constraining power transfer from the generation-rich northern zones to load-intensive SE3 and SE4. This corridor's frequent congestion makes it a natural focus for analyzing capacity allocation methodologies.
 
 \section{Related Work}
 \label{sec:related_work}
@@ -469,7 +469,7 @@ Schönheit et al.~\cite{schonheit_gsk_2020} systematically analyzed how differen
 
 Van den Bergh et al.~\cite{van_den_bergh_dc_2014} examined the validity of DC power flow assumptions in market models, providing theoretical justification for the approximations used in operational FBMC implementations.
 
-The Central Western European (CWE) implementation, operational since May 2015, provides the most extensive empirical evidence on FBMC performance. Post-implementation analyses by ACER and the CWE TSOs documented welfare gains of 150--300 million EUR annually~\cite{cwe_tsos_2020}, though these estimates vary depending on the counterfactual ATC assumptions employed. Notably, the CWE experience revealed implementation challenges including the need for frequent PTDF matrix updates, coordination across multiple TSOs, and market participant adaptation to more complex price formation dynamics.
+The Central Western European (CWE) implementation, operational since May 2015, provides the most extensive empirical evidence on FBMC performance. Post-implementation analyses by ACER and the CWE TSOs documented welfare gains of 150--300 million EUR annually~\cite{cwe_tsos_2020, cwe_report_2020}, though these estimates vary depending on the counterfactual ATC assumptions employed. Notably, the CWE experience revealed implementation challenges including the need for frequent PTDF matrix updates, coordination across multiple TSOs, and market participant adaptation to more complex price formation dynamics.
 
 Beyond CWE, other European regions have pursued or are pursuing FBMC adoption. The Italy North capacity calculation region implemented flow-based allocation in 2021, while the Core capacity calculation region---encompassing Central Europe---completed its transition in June 2022~\cite{acer2022core}. These implementations provide comparative evidence, though direct comparison is complicated by differences in network topology, market structure, and congestion patterns.
 
@@ -689,7 +689,7 @@ The model is implemented in Python 3.11 using the following libraries:
     \item \texttt{scipy.optimize.linprog}: Linear programming solver interface
     \item \texttt{numpy}: Numerical array operations
     \item \texttt{pandas}: Data manipulation and analysis
-    \item \texttt{HiGHS}: High-performance LP solver (via scipy)
+    \item \texttt{HiGHS}: High-performance LP solver~\cite{huangfu_2018} (via scipy)
 \end{itemize}
 
 The implementation follows the methodological framework documented in the POMATO tool~\cite{weinhold_pomato_2021}, though using a custom Python implementation rather than POMATO's Julia backend.
